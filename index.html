@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Calculator · Download</title>
+
+  <!-- Google Fonts - Clean & Modern -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for subtle icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fafbfc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    /* Main card – clean, white, elevated */
+    .card {
+      max-width: 480px;
+      width: 100%;
+      background: white;
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 
+        0 20px 35px -8px rgba(0, 10, 30, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.02) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      transition: transform 0.2s ease;
+      animation: fadeSlideUp 0.5s ease-out;
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header area with app icon / emoji */
+    .app-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      filter: drop-shadow(0 4px 6px rgba(0, 100, 200, 0.15));
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #0f172a, #1e40af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      border-bottom: 1px solid #e9eef2;
+      padding-bottom: 1.5rem;
+    }
+
+    /* Feature list – clean & scannable */
+    .feature-list {
+      text-align: left;
+      margin: 1.75rem 0 2.25rem 0;
+      background: #f8fafc;
+      padding: 1.25rem 1.5rem;
+      border-radius: 1.25rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1e293b;
+      padding: 0.4rem 0;
+    }
+
+    .feature-item i {
+      color: #2563eb;
+      width: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    /* Download button – clean & inviting */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      background: #0f172a;
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 18px -6px rgba(15, 23, 42, 0.2);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .download-btn i {
+      font-size: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: #1e293b;
+      box-shadow: 0 12px 22px -8px rgba(15, 23, 42, 0.3);
+    }
+
+    .download-btn:hover i {
+      transform: translateY(2px);
+    }
+
+    .download-btn:active {
+      transform: scale(0.98);
+      background: #0b1525;
+    }
+
+    /* Version & meta info */
+    .meta-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .meta-info span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .meta-info i {
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: #e2e8f0;
+    }
+
+    /* Github link */
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #475569;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2rem;
+      background: #f1f4f9;
+      transition: background 0.1s ease;
+    }
+
+    .github-link:hover {
+      background: #e6eaf0;
+      color: #0f172a;
+    }
+
+    /* Responsive fine-tuning */
+    @media (max-width: 400px) {
+      .card {
+        padding: 2rem 1.25rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Simple, friendly icon -->
+    <div class="app-icon">🧮</div>
+
+    <h1>Simple Calculator</h1>
+    <div class="subhead">
+      Quick · Clean · No install fuss
+    </div>
+
+    <!-- Key features at a glance -->
+    <div class="feature-list">
+      <div class="feature-item">
+        <i class="fas fa-bolt"></i>
+        <span>Lightning fast, launches instantly</span>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-windows"></i>
+        <span>Native Windows app (exe)</span>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-shield-alt"></i>
+        <span>Simple, safe, portable</span>
+      </div>
+    </div>
+
+    <!-- Download button (uses your raw GitHub link) -->
+    <a href="https://github.com/kaiattafe-tech/simple-calculator/raw/refs/heads/main/SimpleCalculatorv1.zip" 
+       download 
+       style="text-decoration: none; display: block;">
+      <button class="download-btn">
+        <i class="fas fa-download"></i> Download installer
+        <i class="fas fa-chevron-right" style="font-size: 0.8rem; opacity: 0.7;"></i>
+      </button>
+    </a>
+
+    <!-- Version and system info -->
+    <div class="meta-info">
+      <span><i class="fas fa-tag"></i> v1.0.0</span>
+      <span><i class="fas fa-circle" style="font-size: 0.2rem;"></i></span>
+      <span><i class="fas fa-laptop"></i> Windows 10 / 11</span>
+      <span><i class="fas fa-circle" style="font-size: 0.2rem;"></i></span>
+      <span><i class="fas fa-weight-hanging"></i> ~2 MB</span>
+    </div>
+
+    <!-- Subtle divider + github link (optional, but gives a trustworthy dev vibe) -->
+    <div class="divider">
+      <span class="divider-line"></span>
+      <a href="https://github.com/kaiattafe-tech/simple-calculator/raw/refs/heads/main/SimpleCalculator_Setup.exe" 
+         class="github-link" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fab fa-github"></i> kaiattafe-tech
+      </a>
+      <span class="divider-line"></span>
+    </div>
+  </div>
+</body>
+</html>
